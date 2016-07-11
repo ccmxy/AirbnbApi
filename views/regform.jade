@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    div(class='container')
+        form(method='post', action='register' class='regform')
+            h1 Create An Account
+            label Email Address:
+            input(type='text', name='email', placeholder='Enter Email Address')
+            br
+            label Username:
+            input(type='text', name='username', placeholder='Enter Username')
+            br
+            label Password:
+            input(type='password', name='password', placeholder='Enter Password')
+            br
+            input(type='submit', value='Register')
+            a(href='/' class='home-link') Go Home

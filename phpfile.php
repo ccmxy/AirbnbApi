@@ -1,0 +1,1 @@
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=v4lXXf757N&name=ErotCCIty&city=CityValue&state=StateValue&noGuests=3rValue&price=4’ "http://airbnbportal.appspot.com/addlisting"

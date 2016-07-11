@@ -1,0 +1,66 @@
+extends layout
+
+block content
+  div(class="container")
+      div(style="text-align:center;")
+        a(class='button', href='getkey' class="api-button") Generate API Key
+      if (!yourKey)
+        h1 The button above generates an API key and saves it in a MongoDb.
+        h2 Once you have generated it, a demo with pre-loaded cURL commands will appear below.
+      if (yourKey)
+        h3 Your API key is...
+         br
+         br
+         span #{yourKey}
+        p Along with being able to read data, this randomly generated token (which is called "appid" in the api) will enable you to also write, delete, and update the airbnbportal database!
+        if (yourKey)
+          h4 First, delete the "Cozy Cottage" listing, just in case it's there from an old demo...:
+            div(class="element-demo")
+             p(class="digits") curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=#{yourKey}&name=Cozy+Cottage' "http://airbnbportal.appspot.com/delete"
+          h4 Create new listing, "Cozy Cottage" with /addlisting:
+            div(class="element-demo")
+              p(class="digits") curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=#{yourKey}&name=Cozy+Cottage&city=Portland&state=OR&noGuests=2&price=40' "http://airbnbportal.appspot.com/addlisting"
+          p The only required params of /addlisting are your token (appid) and a unique listing name.
+          h4 View all the of listings in the Portland, Oregon:
+              div(class="element-demo")
+                p(class="digits") curl -X GET -H "Content-Type: text/plain" "http://airbnbportal.appspot.com/getlistingsbylocation/?city=Portland&State=OR"
+          p You should get back a JSON of all listings in Portland, OR.
+          h4 Update the listing with http://airbnbportal.appspot.com/updatelistingbyname:
+            div(class="element-demo")
+              p(class="digits") curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=#{yourKey}&name=Beach+Bungalo&city=Newport&state=OR&noGuests=2&price=99' "https://airbnbportal.appspot.com/updatelistingbyname"
+            p There is also a route to update by the listing's id, which is http://airbnbportal.appspot.com/update. It would be called like:
+            code curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=#{yourKey}&id=ListingObjectId&name=DesiredName&city=CityName&state=StateName&noGuests=2&price=99' "https://airbnbportal.appspot.com/update
+            br
+            p (Node implementation of this route further down.)
+
+          h4 Finally, remove the listing:
+            div(class="element-demo")
+              p(class="digits") curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=#{yourKey}&name=Beach+Bungalo' "http://airbnbportal.appspot.com/delete"
+      p You can also these URIs in your own applications.
+      h4 Update a listing with javascript on a machine that has node.js installed:
+      p Create a javascript file in any empty directory, open the command line, and from
+       within the directory of your new javascript file, enter this into the command line:
+        br
+        code npm install request
+        br
+      p Then paste this into the javascript file and save:
+      iframe(type='text/html' width='640' height='390'
+          src='//jsfiddle.net/7dx5838s/embedded/' allowfullscreen='allowfullscreen'
+          frameborder='0')
+      p Then run it with
+       br
+       code node nameOfJavascriptFile.js
+       br
+       and you will have successfully updated a listing.
+      p Here are some other routes:
+      h4 Get all listings:
+      div(class="element-demo")
+        p(class="digits") curl -X GET -H "Content-Type: text/plain"  "http://airbnbportal.appspot.com/getlistings"
+      h4 Get listings by location:
+      div(class="element-demo")
+        p(class="digits") curl -X GET -H "Content-Type: application/x-www-form-urlencoded"  'city=CityLocation&state=StateLocation' "http://airbnbportal.appspot.com/getlistingsbylocation”
+      p Note: You can optionally choose to only send in a city or state, and it will still work for that area.
+      h4 The /delete route also works by object id:
+      div(class="element-demo")
+        p(class="digits") curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=yourGeneratedToken&id=idOfListingToDelete' "http://airbnbportal.appspot.com/delete"
+      a(href='/') Home
