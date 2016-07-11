@@ -58,7 +58,7 @@ block content
         p(class="digits") curl -X GET -H "Content-Type: text/plain"  "http://airbnbportal.appspot.com/getlistings"
       h4 Get listings by location:
       div(class="element-demo")
-        p(class="digits") curl -X GET -H "Content-Type: application/x-www-form-urlencoded"  'city=CityLocation&state=StateLocation' "http://airbnbportal.appspot.com/getlistingsbylocation”
+        p(class="digits") curl -X GET -H "Content-Type: text/plain" "http://airbnbportal.appspot.com/getlistingsbylocation/?city=EnterCityHere&State=EnterStateHere"
       p Note: You can optionally choose to only send in a city or state, and it will still work for that area.
       h4 The /delete route also works by object id:
       div(class="element-demo")

@@ -8,7 +8,6 @@ var bodyParser = require('body-parser');
 
 
 //var routes = require('./routes');
-var user = require('./routes/user');
 var listing = require('./routes/listing');
 
 var app = express();
@@ -51,8 +50,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-  //åapp.listen(3000);
-
 //Error handlers:
 
 // development error handler

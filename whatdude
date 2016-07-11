@@ -1,8 +1,0 @@
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=mg6xRBYJaB&name=Rainville&city=Portland&state=OR&noGuests=2&price=40' "http://airbnbportal.appspot.com/addlisting"
-
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=${yourKey}&name=Sunnyville&city=Portland&state=OR&noGuests=2&price=85&id=IdOfListingToUpdate' "https://airbnbportal.appspot.com/update"
-
-
-
-
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=mg6xRBYJaBe&name=NameYouWant&city=CityYouWant&state=StateYouWant&noGuests=22&price=33e&id=IdOfListingToUpdate' "https://airbnbportal.appspot.com/update"
