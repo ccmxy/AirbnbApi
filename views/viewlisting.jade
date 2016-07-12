@@ -12,4 +12,13 @@ block content
             p Up to #{listing.noGuests} guests allowed
           if(listing.price)
             p $#{listing.price}/night
+         if(listing.comments)
+            each comment, i in listing.comments
+              p #{comment.words}
+         form(method='post', action='addcomment' class='regform')
+                  p Add a comment
+                        label Be honest:
+                        input(type='textarea', name='words')
+                        input(type='hidden', name='id' value='#{listing._id}')
+                        input(type='submit', value='Submit')
        a(href='/') Home

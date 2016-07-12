@@ -38,6 +38,9 @@ app.delete('/delete', listing.deleteListing);
 //Post routes
 app.post('/register',listing.register);
 app.post('/addlisting',listing.addlisting);
+app.post('/addcomment',listing.addcomment);
+app.post('/view/addcomment',listing.addcomment);
+
 
 //Put routes
 app.put('/edit/update',listing.update);

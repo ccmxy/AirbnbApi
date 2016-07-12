@@ -1,6 +1,7 @@
 //Route file
 Listing = require('../models/Listing.js');
 APIKey = require('../models/APIKey.js');
+Comment = require('../models/Comment.js');
 
 /* GET all listings */
 exports.getAll = function(req, res){
@@ -190,6 +191,37 @@ exports.update = function(req,res){
   });
  }
 
+
+ exports.addcomment = function(req, res){
+
+console.log(req.body.id);
+//var comment = new Comment({words: req.body.words, author: "me"});
+var comment = {
+  words: req.body.words,
+  author: "Me"
+}
+
+// Create the category here. `category` is the saved category.
+Comment.create(comment, function (err, category) {
+  if (err) console.log(err);
+
+   Listing.findOne({_id:req.body.id}, function(err, docs){
+     if (err){
+       res.json(err);
+     }
+     docs.comments.push(comment);
+     //console.log(words);
+     docs.save(function (err) {
+       if (err) return handleError(err)
+       console.log('Success!');
+     });
+    //  Listing.update({ _id: req.body.id},{ $push: { comments: { words: req.body.words } } });
+     res.redirect("/view/" + req.body.id);
+   });
+ });
+
+ }
+
 exports.addlisting = function(req,res){
   var apikey = req.body.appid;
    APIKey.find({key:apikey}, function(err, docs){
@@ -200,7 +232,7 @@ exports.addlisting = function(req,res){
       res.json("Invalid API Key");
     }
     if(docs.length){
-      var listing = new Listing({ location: { city: req.body.city , state: req.body.state} });
+      var listing = new Listing({ location: { city: req.body.city , state: req.body.state}, comments: [{}] });
       listing.name = req.body.name;
       listing.noGuests = req.body.noGuests;
       listing.price = req.body.price;

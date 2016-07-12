@@ -4,10 +4,15 @@ var db = require('../lib/db');
 var locationSchema = db.Schema({
   city: String,
   state: String,
-  _id:false 
+  _id:false
+});
+var commentSchema = db.Schema({
+  author: String,
+  words: {type: String, required: true},
 });
 var listingSchema = db.Schema({
   location: locationSchema,
+  comments: [commentSchema],
   name: {type: String, unique: true, required: true},
   noGuests: {type: Number, unique: false},
   price: {type: Number}
