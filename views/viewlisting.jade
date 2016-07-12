@@ -24,11 +24,6 @@ block content
        a(href='/') Home
 
   div(class="container")
-  each listing, i in listings
-      if(listing.comments)
-         each comment, i in listing.comments
-            p #{comment.words}
-  div(class="container")
      .detailBox
           .titleBox
             label Comment Box
@@ -37,12 +32,15 @@ block content
             p.taskDescription Lorem Ipsum is simply dummy text of the printing and typesetting industry.
           .actionBox
             ul.commentList
-              li
-                .commenterImage
-                  img(src='http://lorempixel.com/50/50/people/6')
-                .commentText
-                  p Hello this is a test comment.
-                  span.date.sub-text on March 5th, 2014
+            each listing, i in listings
+              if(listing.comments)
+                each comment, i in listing.comments
+                  li
+                    .commenterImage
+                      img(src='http://lorempixel.com/50/50/people/6')
+                    .commentText
+                      p #{comment.words}
+                      span.date.sub-text on March 5th, 2014
               li
                 .commenterImage
                   img(src='http://lorempixel.com/50/50/people/7')
@@ -58,6 +56,6 @@ block content
                   span.date.sub-text on March 5th, 2014
             form.form-inline(role='form')
               .form-group
-                input.form-control(type='text', placeholder='Your comments')
+                input.form-control(type='text', placeholder='Comment')
               .form-group
                 button.btn.btn-default Add
