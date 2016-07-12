@@ -195,15 +195,17 @@ exports.update = function(req,res){
  exports.addcomment = function(req, res){
 
 console.log(req.body.id);
+console.log(req.body.words);
 //var comment = new Comment({words: req.body.words, author: "me"});
 var comment = {
   words: req.body.words,
-  author: "Me"
+  author: req.body.author
 }
 
 // Create the category here. `category` is the saved category.
 Comment.create(comment, function (err, category) {
   if (err) console.log(err);
+
 
    Listing.findOne({_id:req.body.id}, function(err, docs){
      if (err){

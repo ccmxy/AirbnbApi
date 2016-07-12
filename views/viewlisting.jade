@@ -12,50 +12,28 @@ block content
             p Up to #{listing.noGuests} guests allowed
           if(listing.price)
             p $#{listing.price}/night
-         if(listing.comments)
-            each comment, i in listing.comments
-              p #{comment.words}
-         form(method='post', action='addcomment' class='regform')
-                  p Add a comment
-                        label Be honest:
-                        input(type='textarea', name='words')
-                        input(type='hidden', name='id' value='#{listing._id}')
-                        input(type='submit', value='Submit')
        a(href='/') Home
 
   div(class="container")
      .detailBox
           .titleBox
-            label Comment Box
+            label Comments
             button.close(type='button', aria-hidden='true') ×
           .commentBox
-            p.taskDescription Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            p.taskDescription Please only comment if you have actually stayed at this listing.
           .actionBox
             ul.commentList
             each listing, i in listings
               if(listing.comments)
                 each comment, i in listing.comments
                   li
-                    .commenterImage
-                      img(src='http://lorempixel.com/50/50/people/6')
                     .commentText
                       p #{comment.words}
-                      span.date.sub-text on March 5th, 2014
-              li
-                .commenterImage
-                  img(src='http://lorempixel.com/50/50/people/7')
-                .commentText
-                  p
-                    | Hello this is a test comment and this comment is particularly very long and it goes on and on and on.
-                  span.date.sub-text on March 5th, 2014
-              li
-                .commenterImage
-                  img(src='http://lorempixel.com/50/50/people/9')
-                .commentText
-                  p Hello this is a test comment.
-                  span.date.sub-text on March 5th, 2014
-            form.form-inline(role='form')
-              .form-group
-                input.form-control(type='text', placeholder='Comment')
-              .form-group
-                button.btn.btn-default Add
+                        br
+                        span.date.sub-text #{comment.author}
+              form.form-inline(method='post', action='addcomment')
+                .form-group
+                  input.form-control(type='textarea', name='words', placeholder='Comment' style='width: 300px; height: 150px;')
+                  input.form-control(type='text', name='author', placeholder='Author')
+                  input.form-control(type='hidden', name='id' value='#{listing._id}')
+                  button.btn.btn-default(type="submit") Add

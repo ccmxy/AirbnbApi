@@ -6,7 +6,7 @@ var mongoose = require('mongoose')
 //Create Schema
 
 var commentSchema = db.Schema({
-  author: String,
+  author: {type: String, required: true},
   words: {type: String, required: true},
 });
 

@@ -69,8 +69,6 @@
     padding:10px;
 }
 
-
-
 @import url(https://fonts.googleapis.com/css?family=Play|Karla);
 
 
@@ -176,18 +174,6 @@ p {
   margin-top: 0.2em;
 }
 
-/*.api-button {
-    display: block;
-    width: 115px;
-    height: 25px;
-    background: #4E9CAF;
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-}*/
-
  .digits{
    color: #00FF00;
    font-family: 'Play', sans-serif;
@@ -197,9 +183,6 @@ p {
   list-style-type: none;
 }
 
-/*.userlist li a{
-    text-decoration:none
-}*/
 
 .home-link{float:right;margin-top:15px;}
 .reg-link{float:right;margin-top:15px;}

@@ -18,7 +18,6 @@ var listingSchema = db.Schema({
   price: {type: Number}
 });
 
-
 //Assign User Object
 var myListing = db.mongoose.model('Listing', listingSchema);
 
