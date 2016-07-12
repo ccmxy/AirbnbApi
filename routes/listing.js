@@ -67,7 +67,7 @@ exports.view = function(req,res){
 
 //Delete
   exports.delete = function(req,res){
-    id = req.params.id;
+    id = res.params.id;
     Listing.find({_id:id}).remove(function(){
       res.redirect('/');
     });

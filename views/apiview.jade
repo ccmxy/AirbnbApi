@@ -16,7 +16,7 @@ block content
         if (yourKey)
           h4 First, delete the "Cozy Cottage" listing, just in case it's there from an old demo...:
             div(class="element-demo")
-             p(class="digits") curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=#{yourKey}&name=Cozy+Cottage' "http://airbnbportal.appspot.com/delete"
+             p(class="digits") curl -X DELETE -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=#{yourKey}&name=Cozy+Cottage' "http://airbnbportal.appspot.com/delete"
           h4 Create new listing, "Cozy Cottage" with /addlisting:
             div(class="element-demo")
               p(class="digits") curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=#{yourKey}&name=Cozy+Cottage&city=Portland&state=OR&noGuests=2&price=40' "http://airbnbportal.appspot.com/addlisting"
@@ -35,7 +35,7 @@ block content
 
           h4 Finally, remove the listing:
             div(class="element-demo")
-              p(class="digits") curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=#{yourKey}&name=Beach+Bungalo' "http://airbnbportal.appspot.com/delete"
+              p(class="digits") curl -X DELETE -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=#{yourKey}&name=Beach+Bungalo' "http://airbnbportal.appspot.com/delete"
       p You can also these URIs in your own applications.
       h4 Update a listing with javascript on a machine that has node.js installed:
       p Create a javascript file in any empty directory, open the command line, and from
@@ -62,5 +62,5 @@ block content
       p Note: You can optionally choose to only send in a city or state, and it will still work for that area.
       h4 The /delete route also works by object id:
       div(class="element-demo")
-        p(class="digits") curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=yourGeneratedToken&id=idOfListingToDelete' "http://airbnbportal.appspot.com/delete"
+        p(class="digits") curl -X DELETE -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=yourGeneratedToken&id=idOfListingToDelete' "http://airbnbportal.appspot.com/delete"
       a(href='/') Home

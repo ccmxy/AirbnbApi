@@ -1,3 +1,5 @@
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=yourGeneratedToken&id=idOfListingToDelete' "http://airbnbportal.appspot.com/delete"
 
 curl -X PUT -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=rkPCBZNZwv&name=NameYouWant&city=CityYouWant&state=StateYouWant&noGuests=22&price=33&id=57842487de3497cc1c635643' "http://localhost:3000/update"
+
+curl -X DELETE -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=m2TR6x7RMQ&name=Cozy+Cottage' "http://airbnbportal.appspot.com/delete"
