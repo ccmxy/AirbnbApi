@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//var stormpath = require('express-stormpath');
+var methodOverride = require('method-override');
 
 
 //var routes = require('./routes');
@@ -21,6 +21,7 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -30,18 +31,18 @@ app.post('/register',listing.register);
 app.post('/addlisting',listing.addlisting);
 app.get('/regform', listing.regformlisting);
 app.get('/getkey', listing.getkey);
-app.post('/edit/update',listing.update);
 app.get('/view/:id', listing.view);
 app.get('/delete/:id', listing.delete);
 app.get('/edit/:id',listing.edit);
 app.post('/delete', listing.deleteListing);
-app.post('/updatelistingbyname', listing.updateByName);
 
-//Ones to do over curl, etc
-app.post('/update', listing.changelisting);
+//Put routes
+app.put('/updatelistingbyname', listing.updateByName);
+app.put('/edit/update',listing.update);
+app.put('/update', listing.changelisting);
+
 app.get('/getlistings', listing.getAll);
 app.get('/statelistings/:state', listing.statelisting);
-
 app.get('/getlistingsbylocation/', listing.location);
 
 // catch 404 and forward to error handler

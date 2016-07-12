@@ -6,7 +6,7 @@ block content
       each listing, i in listings
         li
           h1 #{listing.name}
-          form(method='post', action='update' class='regform')
+          form(method='post', action='update?_method=PUT' class='regform')
             label Name:
             input(type='text', name='name', value='#{listing.name}')
             br

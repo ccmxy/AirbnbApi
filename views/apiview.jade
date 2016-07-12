@@ -25,11 +25,11 @@ block content
               div(class="element-demo")
                 p(class="digits") curl -X GET -H "Content-Type: text/plain" "http://airbnbportal.appspot.com/getlistingsbylocation/?city=Portland&State=OR"
           p You should get back a JSON of all listings in Portland, OR.
-          h4 Update the listing with http://airbnbportal.appspot.com/updatelistingbyname:
+          h4 Update the listing with a PUT request to http://airbnbportal.appspot.com/updatelistingbyname:
             div(class="element-demo")
-              p(class="digits") curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=#{yourKey}&name=Beach+Bungalo&city=Newport&state=OR&noGuests=2&price=99' "https://airbnbportal.appspot.com/updatelistingbyname"
+              p(class="digits") curl -X PUT -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=#{yourKey}&name=Beach+Bungalo&city=Newport&state=OR&noGuests=2&price=99' "http://localhost:3000/updatelistingbyname"
             p There is also a route to update by the listing's id, which is http://airbnbportal.appspot.com/update. It would be called like:
-            code curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=#{yourKey}&id=ListingObjectId&name=DesiredName&city=CityName&state=StateName&noGuests=2&price=99' "https://airbnbportal.appspot.com/update
+            code curl -X PUT -H "Content-Type: application/x-www-form-urlencoded" -d 'appid=#{yourKey}&name=NameYouWant&city=CityYouWant&state=StateYouWant&noGuests=4&price=50&id=IdOfListingObject' "https://airbnbportal.appspot.com/update
             br
             p (Node implementation of this route further down.)
 
@@ -45,7 +45,7 @@ block content
         br
       p Then paste this into the javascript file and save:
       iframe(type='text/html' width='640' height='390'
-          src='//jsfiddle.net/7dx5838s/embedded/' allowfullscreen='allowfullscreen'
+          src='//jsfiddle.net/6096Lwg7/embedded/' allowfullscreen='allowfullscreen'
           frameborder='0')
       p Then run it with
        br
