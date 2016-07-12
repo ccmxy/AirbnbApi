@@ -22,3 +22,42 @@ block content
                         input(type='hidden', name='id' value='#{listing._id}')
                         input(type='submit', value='Submit')
        a(href='/') Home
+
+  div(class="container")
+  each listing, i in listings
+      if(listing.comments)
+         each comment, i in listing.comments
+            p #{comment.words}
+  div(class="container")
+     .detailBox
+          .titleBox
+            label Comment Box
+            button.close(type='button', aria-hidden='true') ×
+          .commentBox
+            p.taskDescription Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          .actionBox
+            ul.commentList
+              li
+                .commenterImage
+                  img(src='http://lorempixel.com/50/50/people/6')
+                .commentText
+                  p Hello this is a test comment.
+                  span.date.sub-text on March 5th, 2014
+              li
+                .commenterImage
+                  img(src='http://lorempixel.com/50/50/people/7')
+                .commentText
+                  p
+                    | Hello this is a test comment and this comment is particularly very long and it goes on and on and on.
+                  span.date.sub-text on March 5th, 2014
+              li
+                .commenterImage
+                  img(src='http://lorempixel.com/50/50/people/9')
+                .commentText
+                  p Hello this is a test comment.
+                  span.date.sub-text on March 5th, 2014
+            form.form-inline(role='form')
+              .form-group
+                input.form-control(type='text', placeholder='Your comments')
+              .form-group
+                button.btn.btn-default Add
